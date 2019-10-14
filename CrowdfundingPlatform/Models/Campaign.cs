@@ -23,11 +23,13 @@ namespace CrowdfundingPlatform.Models
         public virtual ICollection<News> News { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<Bonus> Bonuses { get; set; }
+        public virtual ICollection<Tag> Tags { get; set; }
         public Campaign()
         {
             News = new HashSet<News>();
             Comments = new HashSet<Comment>();
             Bonuses = new HashSet<Bonus>();
+            Tags = new HashSet<Tag>();
         }
     }
 }

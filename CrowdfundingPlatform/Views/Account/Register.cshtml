@@ -1,0 +1,29 @@
+﻿@model CrowdfundingPlatform.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register new user</h2>
+
+<form method="post" asp-action="Register" asp-controller="Account">
+    <div asp-validation-summary="ModelOnly"></div>
+    <div class="form-group w-50">
+        <label asp-for="Email"></label></br>
+        <input class="form-control" asp-for="Email" required />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group w-50">
+        <label asp-for="Password"></label></br>
+        <input class="form-control" asp-for="Password" required />
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group w-50">
+        <label asp-for="PasswordConfirm"></label></br>
+        <input class="form-control" asp-for="PasswordConfirm" required />
+        <span asp-validation-for="PasswordConfirm"></span>
+    </div>
+    <div>
+        <input class="btn btn-outline-info" type="submit" value="Register" />
+    </div>
+</form>

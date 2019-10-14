@@ -1,8 +1,104 @@
-﻿@{
+﻿@model IEnumerable<CrowdfundingPlatform.Models.Campaign>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Croudfunding Platform</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <style>
+    .cloud {
+    display: inline;
+    list-style-type: none;
+    }
+
+    .cloud li {
+        list-style: none;
+        display: inline;
+    }
+        .cloud li:nth-of-type(3n + 1) {
+            font-size: 1.25em;
+        }
+
+        .cloud li:nth-of-type(4n+3) {
+            font-size: 1.5em;
+        }
+
+        .cloud li:nth-of-type(5n - 3) {
+            font-size: 1em;
+        }
+    </style>
+
+    <body>
+        <div class="container">
+            <div class="row align-items-start">
+
+                <div class="col-5">
+                    <h5 class="text-center">Last Updated</h5>
+                    @foreach (var item in @Model.OrderByDescending(p => p.UpdatedAt))
+                    {
+                        <div class="card">
+                            <div class="card-header">
+                                @item.Subject
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Title</h5>
+                                <p class="card-text">@item.Description</p>
+                                <h2 class="card-title pricing-card-title">$@item.Available <small class="text-muted">/ @item.Needed</small></h2>
+                                <a asp-controller="Campaign" asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Learn more</a>
+                                <a asp-controller="Donate" asp-action="Campaign" asp-route-id="@item.Id" class="btn btn-outline-success">Donate</a>
+                            </div>
+                        </div>
+                        <hr>
+                    }
+                </div>
+
+                <div class="col-5">
+                    <h5 class="text-center">Most Rated</h5>
+                    @foreach (var item in @Model.OrderByDescending(p => p.Rating))
+                    {
+                        <div class="card">
+                            <div class="card-header">
+                                @item.Subject
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Title</h5>
+                                <p class="card-text">@item.Description</p>
+                                <h2 class="card-title pricing-card-title">$@item.Available <small class="text-muted">/ @item.Needed</small></h2>
+                                <a asp-controller="Campaign" asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Learn more</a>
+                                <a asp-controller="Donate" asp-action="Campaign" asp-route-id="@item.Id" class="btn btn-outline-success">Donate</a>
+                            </div>
+                        </div>
+                        <hr>
+                    }
+                </div>
+
+                <div class="col-2">
+                    <h5 class="text-center">Tags</h5>
+                    <ul class="cloud">
+                        <li><a href="#">Video</a></li>
+                        <li><a href="#">Hovanskii</a></li>
+                        <li><a href="#">Yulik</a></li>
+                        <li><a href="#">Onezhko</a></li>
+                        <li><a href="#">Beer</a></li>
+                        <li><a href="#">Mustache</a></li>
+                        <li><a href="#">KFC</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Old</a></li>
+                        <li><a href="#">Tik-Tok</a></li>
+                        <li><a href="#">Serdca za lubov</a></li>
+                        <li><a href="#">Video</a></li>
+                        <li><a href="#">Hovanskii</a></li>
+                        <li><a href="#">Yulik</a></li>
+                        <li><a href="#">Onezhko</a></li>
+                        <li><a href="#">Beer</a></li>
+                        <li><a href="#">Mustache</a></li>
+                        <li><a href="#">KFC</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Old</a></li>
+                        <li><a href="#">Tik-Tok</a></li>
+                        <li><a href="#">Serdca za lubov</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </body>
+

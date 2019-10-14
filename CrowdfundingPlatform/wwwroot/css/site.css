@@ -54,3 +54,25 @@ body {
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.cloud {
+    display: inline;
+    list-style-type: none;
+    width: 400px;
+}
+
+    .cloud li {
+        list-style: none;
+        display: inline;
+    }
+        .cloud li:nth-of-type(3n + 1) {
+            font-size: 1.25em;
+        }
+
+        .cloud li:nth-of-type(4n+3) {
+            font-size: 1.5em;
+        }
+
+        .cloud li:nth-of-type(5n - 3) {
+            font-size: 1em;
+        }

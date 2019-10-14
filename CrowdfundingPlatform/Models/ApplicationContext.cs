@@ -21,6 +21,7 @@ namespace CrowdfundingPlatform.Models
         public DbSet<News> News { get; set; }
         public DbSet<Rated> Rated { get; set; }
         public DbSet<Benefit> Benefits { get; set; }
+        public DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -29,8 +30,10 @@ namespace CrowdfundingPlatform.Models
                 .HasOne<Campaign>(a => a.Campaign)
                 .WithMany(d => d.News)
                 .HasForeignKey(d => d.CampaignId);
+            builder.Entity<Campaign>()
+                .HasOne<User>(a => a.Owner)
+                .WithMany(d => d.Campaigns)
+                .HasForeignKey(d => d.OwnerId);
         }
-
-
     }
 }

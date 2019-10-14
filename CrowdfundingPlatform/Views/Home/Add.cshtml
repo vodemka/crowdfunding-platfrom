@@ -1,0 +1,58 @@
+﻿@model CrowdfundingPlatform.Models.Campaign
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Here you can create new campaign</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="CreateCampaign" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group w-75">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" placeholder="A title of your campaign" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group w-75">
+                <label asp-for="Subject" class="control-label"></label>
+                <select class="custom-select" asp-for="Subject">
+                    <option>Games</option>
+                    <option>Videoblogging</option>
+                    <option>Science</option>
+                    <option>Else</option>
+                </select>
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group w-75">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" rows="10"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group w-75">
+                <label class="control-label">How much money you need?</label>
+                <input asp-for="Needed" class="form-control" placeholder="$" />
+                <span asp-validation-for="Needed" class="text-danger"></span>
+            </div>
+            <div class="form-group w-75">
+                <label asp-for="Expiration" class="control-label"></label>
+                <input asp-for="Expiration" class="form-control" />
+                <span asp-validation-for="Expiration" class="text-danger"></span>
+            </div>
+            <div class="form-group w-75">
+                <label asp-for="VideoLink" class="control-label"></label>
+                <input asp-for="VideoLink" class="form-control" placeholder="https://youtube.com/..."/>
+                <span asp-validation-for="VideoLink" class="text-danger"></span>
+            </div>
+            <div class="form-group w-50">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Home</a>
+</div>
+
